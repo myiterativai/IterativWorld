@@ -53,7 +53,7 @@ import { registerNavigationAuthorityListener } from '../navigationPolicy.js';
 /** Display labels shown in the mini-status readout for each active style. */
 
 /**
- * Central UI orchestrator for the God's Eye View application.
+ * Central UI orchestrator for the IterativWorld application.
  *
  * Responsibilities:
  * - Visual controls and presets backed by the VisualEffects controller.
