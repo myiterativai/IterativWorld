@@ -1,0 +1,94 @@
+{
+  "$comment": "Machine-readable data-source licence records ($data-licence's contract). DATA_SOURCES.md is what a human reads; this is what $layer-steward and $knowledge-steward check programmatically. The two must never disagree — if they do, this manifest is wrong until proven otherwise. unknown commercialUse is BLOCKING, never permission.",
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "sourceId": "telegeography-submarine-cables",
+      "name": "TeleGeography Submarine Cable Map",
+      "location": "src/data/local_data/telegeography_submarine_cables/",
+      "licence": "CC BY-NC-SA 3.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "commercialUse": false,
+      "redistribution": true,
+      "shareAlike": true,
+      "attribution": "© TeleGeography — submarinecablemap.com",
+      "retrievedAt": "2026-08-01",
+      "remedy": "Delete the folder or license from TeleGeography before any commercial build; self-contained, app runs without it. Registered layer: telegeography-submarine-cables."
+    },
+    {
+      "sourceId": "bhote-koshi-event-pack",
+      "name": "Bhote Koshi event pack (Vantor imagery crops, GeoPera-derived river centerline)",
+      "location": "public/events/bhote-koshi-2026/",
+      "licence": "CC BY-NC 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "commercialUse": false,
+      "redistribution": true,
+      "shareAlike": false,
+      "attribution": "See public/events/bhote-koshi-2026/README.md",
+      "retrievedAt": "2026-09-01",
+      "remedy": "Arrived with the September 2026 upstream Nepal merge. Deleting only public/events/bhote-koshi-2026/ is NOT sufficient — src/data/bhoteKoshiFloodPath.js is derived from the same NC source and compiles into the scene; excluding it also requires removing the scene's registrations and imports before building. Registered layers: bhote-koshi-2026, bhote-koshi-locator."
+    },
+    {
+      "sourceId": "osm-datacenters",
+      "name": "Datacenters (~4.3K)",
+      "location": "src/data/local_data/datacenters/",
+      "licence": "ODbL 1.0",
+      "licenceUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "commercialUse": true,
+      "redistribution": true,
+      "shareAlike": true,
+      "attribution": "© OpenStreetMap contributors",
+      "retrievedAt": "2026-08-01",
+      "remedy": "Commercial use fine; share-alike attaches to a publicly distributed modified database — keep derived DBs separate from MIT code and offer modifications under ODbL."
+    },
+    {
+      "sourceId": "osm-dams",
+      "name": "Dams (704)",
+      "location": "src/data/local_data/dams/",
+      "licence": "ODbL 1.0",
+      "licenceUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "commercialUse": true,
+      "redistribution": true,
+      "shareAlike": true,
+      "attribution": "© OpenStreetMap contributors (+ Open Infrastructure Map)",
+      "retrievedAt": "2026-08-01",
+      "remedy": "Same ODbL posture as datacenters."
+    },
+    {
+      "sourceId": "natural-earth",
+      "name": "Natural Earth physical regions (1,046 land + 292 marine polygons)",
+      "location": "src/data/local_data/natural_earth/",
+      "licence": "Public domain",
+      "commercialUse": true,
+      "redistribution": true,
+      "shareAlike": false,
+      "attribution": "Made with Natural Earth (courtesy credit — not legally required)",
+      "retrievedAt": "2026-08-01",
+      "remedy": "None."
+    },
+    {
+      "sourceId": "datasf-neighborhoods",
+      "name": "DataSF Analysis Neighborhoods (41 polygons)",
+      "location": "src/data/local_data/neighborhoods/",
+      "licence": "PDDL 1.0",
+      "commercialUse": true,
+      "redistribution": true,
+      "shareAlike": false,
+      "attribution": "City & County of San Francisco — DataSF (courtesy — not legally required)",
+      "retrievedAt": "2026-08-01",
+      "remedy": "None."
+    },
+    {
+      "sourceId": "cctv-ground-heights",
+      "name": "CCTV ground heights (3,445 cameras)",
+      "location": "src/data/local_data/cctv_ground_heights/",
+      "licence": "See folder README (precomputed placement heights aligned to Google Photorealistic 3D Tiles)",
+      "commercialUse": null,
+      "redistribution": null,
+      "shareAlike": null,
+      "attribution": "—",
+      "retrievedAt": "2026-08-01",
+      "remedy": "commercialUse is unknown — treat as BLOCKING for commercial builds until the folder README is reviewed against the actual licence text ($data-licence procedure step 1)."
+    }
+  ]
+}

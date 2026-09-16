@@ -1695,7 +1695,7 @@
       "src/voice/commands.js",
       "src/voice/control.js",
       "src/voice/gevActions.js",
-      "src/world/worldContextEngine.js",
+      "src/services/worldContextEngine.js",
       "src/voice/gevRealtime.js",
       "src/voice/layerSummary.js",
       "src/voice/realtimeBackend.js",

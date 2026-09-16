@@ -37,7 +37,7 @@ import { TR3B_CLASS } from '../data/tr3bRegistry.js';
 import {
   resolveWorldContext,
   formatViewBrief,
-} from '../world/worldContextEngine.js';
+} from '../services/worldContextEngine.js';
 
 const ALLOWED_STYLES = new Set([
   'normal',

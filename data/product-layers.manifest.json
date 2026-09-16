@@ -1,0 +1,194 @@
+{
+  "$comment": "Per-product layer allow-lists ($layer-steward's contract). Every LAYER_STATE_REGISTRY id must appear in every product. reason is required for disabled entries and must be editorial or legal, never 'unused'. Disable, don't delete \u2014 disabled layers stay in the tree so upstream merges stay clean.",
+  "schemaVersion": 1,
+  "products": {
+    "iterativworld": {
+      "description": "The world-intelligence platform: keeps and expands the inherited live layers.",
+      "layers": {
+        "ais-live-vessels": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "alpr-cameras": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "bhote-koshi-2026": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "bhote-koshi-locator": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "bikeshare": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "cctv": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "directions": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "earthquakes": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "flights": {
+          "enabled": true,
+          "defaultOn": true
+        },
+        "local-dams": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "local-datacenters": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "local-firms": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "military": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "military-awareness": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "military-installations": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "radio": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "rocket-launches": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "satellites": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "telegeography-submarine-cables": {
+          "enabled": true,
+          "defaultOn": false,
+          "note": "CC BY-NC-SA 3.0 data \u2014 must be disabled or removed in any commercial build; see $data-licence and DATA_SOURCES.md"
+        },
+        "traffic": {
+          "enabled": true,
+          "defaultOn": false
+        },
+        "transit": {
+          "enabled": true,
+          "defaultOn": false
+        }
+      }
+    },
+    "iterativtours": {
+      "description": "The tourism product: scenery, not surveillance. Most live-signal layers are off-thesis.",
+      "layers": {
+        "ais-live-vessels": {
+          "enabled": true,
+          "defaultOn": false,
+          "reason": "harbour and coastal scenery; keep"
+        },
+        "alpr-cameras": {
+          "enabled": false,
+          "reason": "reads as surveillance; off-thesis for IterativTours"
+        },
+        "bhote-koshi-2026": {
+          "enabled": true,
+          "defaultOn": false,
+          "reason": "landmark-scale natural event storytelling; keep for the free product \u2014 NC-licensed data (CC BY-NC 4.0, see $data-licence), blocking for a commercial build"
+        },
+        "bhote-koshi-locator": {
+          "enabled": true,
+          "defaultOn": false,
+          "reason": "landmark-scale natural event storytelling; keep for the free product \u2014 NC-licensed data (CC BY-NC 4.0, see $data-licence), blocking for a commercial build"
+        },
+        "bikeshare": {
+          "enabled": false,
+          "reason": "utility data; off-thesis for a scenic tours product"
+        },
+        "cctv": {
+          "enabled": false,
+          "reason": "public camera feeds read as surveillance; off-thesis for IterativTours"
+        },
+        "directions": {
+          "enabled": true,
+          "defaultOn": false,
+          "reason": "route planning is core tour utility; keep"
+        },
+        "earthquakes": {
+          "enabled": true,
+          "defaultOn": false,
+          "reason": "safety-relevant natural events; keep"
+        },
+        "flights": {
+          "enabled": false,
+          "reason": "aircraft tracking reads as surveillance infrastructure; off-thesis"
+        },
+        "local-dams": {
+          "enabled": true,
+          "defaultOn": false,
+          "reason": "landmark-scale infrastructure scenery; keep"
+        },
+        "local-datacenters": {
+          "enabled": false,
+          "reason": "off-thesis for a scenic tours product"
+        },
+        "local-firms": {
+          "enabled": false,
+          "reason": "active fire monitoring is safety-utility, not scenery; defer to earthquake/vessel safety layers"
+        },
+        "military": {
+          "enabled": false,
+          "reason": "military aircraft tracking reads as surveillance; off-thesis"
+        },
+        "military-awareness": {
+          "enabled": false,
+          "reason": "military context layer; off-thesis"
+        },
+        "military-installations": {
+          "enabled": false,
+          "reason": "military site mapping reads as surveillance; off-thesis"
+        },
+        "radio": {
+          "enabled": false,
+          "reason": "global radio directory is world-intelligence, not tour guidance"
+        },
+        "rocket-launches": {
+          "enabled": true,
+          "defaultOn": false,
+          "reason": "launches are public spectacle events with tour value; keep"
+        },
+        "satellites": {
+          "enabled": true,
+          "defaultOn": false,
+          "reason": "visible passes are a tour experience; keep"
+        },
+        "telegeography-submarine-cables": {
+          "enabled": false,
+          "reason": "NC-licensed data (CC BY-NC-SA 3.0, see $data-licence and DATA_SOURCES.md)"
+        },
+        "traffic": {
+          "enabled": false,
+          "reason": "traffic flow reads as surveillance utility; off-thesis"
+        },
+        "transit": {
+          "enabled": true,
+          "defaultOn": false,
+          "reason": "getting to tour start points; keep"
+        }
+      }
+    }
+  }
+}
