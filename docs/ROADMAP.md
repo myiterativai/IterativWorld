@@ -53,11 +53,17 @@ context from the graph, not just its kinematic state.
 
 ## Phase 3 — Time
 
-**Goal:** the temporal world model.
+**Goal:** the temporal world model. **Foundation shipped** — temporal
+context with precision/confidence semantics, half-open entity intervals,
+typed temporal relationships, granular events with a diffing store, and
+historical layer policy, all wired into the World Context Engine
+(`src/services/temporalModel.js`, `docs/TEMPORAL-MODEL.md`).
 
+- [x] Temporal semantics + store + engine shift (the foundation).
 - [ ] Historical events at real locations (event entities with time + place).
-- [ ] Timeline UI bound to the globe camera.
-- [ ] Temporal globe: borders and places change with the selected period.
+- [ ] Timeline UI bound to the globe camera (jump / scrub / play).
+- [ ] Temporal globe: borders and places change with the selected period —
+      **licence-gated** (CShapes is NC; see $data-licence).
 - [ ] World Stories: cinematic camera + narration sequences over events.
 
 Acceptance: "show me the evolution of European borders" plays as a grounded

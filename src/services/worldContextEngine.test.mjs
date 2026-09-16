@@ -127,7 +127,8 @@ test('every context records asOf timestamps and provenance', () => {
     'Google Photorealistic 3D Tiles / Cesium basemap',
   );
   assert.equal(context.provenance.engine.version, WORLD_CONTEXT_ENGINE_VERSION);
-  assert.ok(context.temporal.note.includes('Phase 3'));
+  assert.equal(context.temporal.temporalMode, 'live');
+  assert.equal(context.provenance.temporalModel.version, '0.1.0');
 });
 
 test('a null scene degrades to a valid global context rather than throwing', () => {
@@ -168,6 +169,32 @@ test('formatViewBrief renders the explain-this-view brief', () => {
   assert.ok(brief.indexOf('CURRENT VIEW') < brief.indexOf('LANDMARKS'));
   assert.ok(brief.indexOf('LANDMARKS') < brief.indexOf('LIVE'));
   assert.ok(brief.indexOf('LIVE') < brief.indexOf('EXPLORE'));
+});
+
+test('a historical temporal context shifts the whole engine: live suppressed, asOf = instant', () => {
+  const temporal = {
+    instant: '1989-11-09',
+    precision: 'day',
+    confidence: 'high',
+  };
+  const context = resolveWorldContext(SCENE, { now: NOW, temporal });
+  assert.equal(context.temporal.temporalMode, 'historical');
+  assert.equal(context.temporal.instant.getUTCFullYear(), 1989);
+  assert.equal(context.temporal.asOf, context.temporal.instant);
+  assert.equal(context.live.suppressed, true);
+  assert.equal(context.live.layerCount, 0);
+  assert.ok(context.live.reason.includes('suppressed'));
+  // Suggested actions lose [follow] — no live entities in 1989.
+  assert.deepEqual(
+    context.suggestedActions.map((entry) => entry.action),
+    ['compare', 'timeline', 'story'],
+  );
+  // A full temporal context object passes through without re-normalization.
+  const direct = resolveWorldContext(SCENE, {
+    now: NOW,
+    temporal: context.temporal,
+  });
+  assert.equal(direct.temporal.instant.getTime(), context.temporal.instant.getTime());
 });
 
 test('formatViewBrief omits empty sections and handles invalid input', () => {

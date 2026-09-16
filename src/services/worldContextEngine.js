@@ -14,6 +14,12 @@
  * "Explain this view" interaction, and the provenance layer).
  */
 
+import {
+  createTemporalContext,
+  temporalLayerPolicy,
+  TEMPORAL_MODEL_VERSION,
+} from './temporalModel.js';
+
 export const WORLD_CONTEXT_ENGINE_VERSION = '0.1.0';
 
 /** View-scale thresholds mirror `classifyViewScale` in gevActions.js. */
@@ -101,11 +107,21 @@ function suggestedActionsFor({ identity, landmarks, live }) {
  *   `{ camera: {latitude, longitude, heightM}, basemap: {viewScale, place,
  *   nearbyPlaces, knownLandmarks, source, ...}, enabledLayers, style }`.
  *   Every part is optional; the engine degrades gracefully.
- * @param {{ now?: Date }} [options] Injectable clock for deterministic tests.
+ * @param {{ now?: Date, temporal?: object }} [options] Injectable clock for
+ *   deterministic tests; `temporal` is a temporal context (or the inputs to
+ *   one — see createTemporalContext) that shifts the whole resolution into
+ *   historical mode when it carries an instant.
  * @returns {object} World context with identity chain, landmarks, live
- *   rollup, suggested actions, and per-field provenance.
+ *   rollup, temporal state, suggested actions, and per-field provenance.
  */
 export function resolveWorldContext(scene, options = {}) {
+  const temporal =
+    options.temporal != null
+      ? options.temporal.model === TEMPORAL_MODEL_VERSION
+        ? options.temporal
+        : createTemporalContext(options.temporal)
+      : createTemporalContext();
+  const layerPolicy = temporalLayerPolicy(temporal.temporalMode);
   const asOf =
     options.now instanceof Date && !Number.isNaN(options.now.getTime())
       ? options.now.toISOString()
@@ -162,7 +178,9 @@ export function resolveWorldContext(scene, options = {}) {
     }))
     .filter((entry) => entry.name != null);
 
-  const live = liveRollup(scene?.enabledLayers);
+  const live = layerPolicy.liveLayersEnabled
+    ? liveRollup(scene?.enabledLayers)
+    : { ...liveRollup([]), suppressed: true, reason: layerPolicy.reason };
   const identity = {
     chain,
     precision: viewScale,
@@ -193,6 +211,10 @@ export function resolveWorldContext(scene, options = {}) {
       version: WORLD_CONTEXT_ENGINE_VERSION,
       note: 'Derived fields (identity chain, rollup, suggested actions) are computed locally from the supplied scene.',
     },
+    temporalModel: {
+      version: TEMPORAL_MODEL_VERSION,
+      note: 'Temporal semantics (intervals, precision, events) come from the shared temporal model; see docs/TEMPORAL-MODEL.md.',
+    },
   };
 
   return {
@@ -204,8 +226,12 @@ export function resolveWorldContext(scene, options = {}) {
     landmarks,
     live,
     temporal: {
-      asOf,
-      note: 'v0 resolves the present view only; the temporal world model (borders, events, time travel) lands in Phase 3.',
+      ...temporal,
+      asOf: temporal.temporalMode === 'live' ? asOf : temporal.instant,
+      note:
+        temporal.temporalMode === 'live'
+          ? 'Live mode: the present view, observed now.'
+          : 'Historical mode: live signals are suppressed; identity reflects the selected instant, not the present.',
     },
     suggestedActions,
     provenance,

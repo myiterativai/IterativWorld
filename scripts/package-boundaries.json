@@ -1698,6 +1698,7 @@
       "src/voice/gevActions.js",
       "src/voice/voiceRuntime.js",
       "src/services/worldContextEngine.js",
+      "src/services/temporalModel.js",
       "src/voice/gevRealtime.js",
       "src/voice/layerSummary.js",
       "src/voice/realtimeBackend.js",
