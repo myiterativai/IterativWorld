@@ -299,6 +299,14 @@ const schemas = [
     },
   },
   {
+    name: 'explain_view',
+    parameters: {
+      type: 'object',
+      additionalProperties: false,
+      properties: {},
+    },
+  },
+  {
     name: 'set_hud',
     parameters: {
       type: 'object',

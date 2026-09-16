@@ -34,6 +34,10 @@ import { unavailablePlaceSearch } from '../search/placeSearch.js';
 import * as defaultAnnotationResolver from '../annotations/annotationResolver.js';
 import { normalizeRadioCountryInput } from '../data/radioCountry.js';
 import { TR3B_CLASS } from '../data/tr3bRegistry.js';
+import {
+  resolveWorldContext,
+  formatViewBrief,
+} from '../world/worldContextEngine.js';
 
 const ALLOWED_STYLES = new Set([
   'normal',
@@ -1023,6 +1027,10 @@ export function createGevActionRunner({
         dataManager,
         sceneDirector,
       );
+    }
+
+    if (name === 'explain_view') {
+      return explainView(viewer, styleManager, dataManager);
     }
 
     if (name === 'set_hud') {
@@ -2978,6 +2986,25 @@ function normalizeLocationId(value) {
   if (CITY_POIS[raw]) return raw;
   if (CITY_ALIASES.has(raw)) return CITY_ALIASES.get(raw);
   return null;
+}
+
+async function explainView(viewer, styleManager, dataManager) {
+  const viewTarget = getViewTargetCartographic(viewer);
+  const scene = await getSceneContext(
+    viewer,
+    styleManager,
+    dataManager,
+    viewTarget,
+  );
+  const context = resolveWorldContext(scene);
+  const brief = formatViewBrief(context);
+  return {
+    ok: true,
+    action: 'explain_view',
+    brief,
+    context,
+    note: 'Narrate the brief conversationally. The context object carries provenance for every claim; do not invent facts beyond it.',
+  };
 }
 
 function getCurrentViewState(

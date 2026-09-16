@@ -7,7 +7,11 @@
 
 [![CI](https://github.com/myiterativai/IterativWorld/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/myiterativai/IterativWorld/actions/workflows/ci.yml)
 
-### A spy-satellite simulator in your browser — then you realize the sources are public and the data is real.
+### The interactive operating system for understanding the world.
+
+**IterativWorld** upgrades the live globe into a spatial interface for knowledge: every view resolves to structured, provenance-tagged context — identity chain, landmarks, live activity — and the globe itself answers *"Explain what I'm looking at."* See [docs/PRODUCT-CONCEPT.md](docs/PRODUCT-CONCEPT.md) and [docs/ROADMAP.md](docs/ROADMAP.md).
+
+The original brief still holds — a spy-satellite simulator in your browser, with public sources and real data.
 
 Photorealistic 3D globe. Live aircraft, ships, satellites, earthquakes, traffic, and public cameras. Hands-free voice control powered by a realtime AI agent.
 

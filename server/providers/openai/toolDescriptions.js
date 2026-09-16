@@ -1,7 +1,7 @@
 export const ACTION_DESCRIPTIONS = {
   fly_to_location: {
     description:
-      "Fly the IterativWorld camera to a known city, geocoded country/region/city/landmark, or explicit WGS84 coordinate. Countries/cities frame the whole place; landmarks/buildings use close framing.",
+      'Fly the IterativWorld camera to a known city, geocoded country/region/city/landmark, or explicit WGS84 coordinate. Countries/cities frame the whole place; landmarks/buildings use close framing.',
     $position: 1,
     parameters: {
       properties: {
@@ -76,7 +76,7 @@ export const ACTION_DESCRIPTIONS = {
     $position: 1,
   },
   set_layer_visibility: {
-    description: "Enable or disable one registered IterativWorld data layer.",
+    description: 'Enable or disable one registered IterativWorld data layer.',
     $position: 1,
     parameters: {
       properties: {
@@ -143,7 +143,7 @@ export const ACTION_DESCRIPTIONS = {
     },
   },
   set_visual_style: {
-    description: "Set the active IterativWorld visual filter/style.",
+    description: 'Set the active IterativWorld visual filter/style.',
     $position: 1,
   },
   get_entity_context: {
@@ -167,6 +167,11 @@ export const ACTION_DESCRIPTIONS = {
   get_current_view_state: {
     description:
       'Read the current camera, style, Context, Cockpit, HUD, detection, map stack, post-processing, scene-playback, tracked-entity, and layer state before choosing another action.',
+    $position: 1,
+  },
+  explain_view: {
+    description:
+      'Explain the current view end to end: the identity chain (landmark, city, region, country), nearby landmarks, live entity activity, and suggested next explorations, from the World Context Engine brief.',
     $position: 1,
   },
   set_hud: {
