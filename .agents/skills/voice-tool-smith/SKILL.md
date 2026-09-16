@@ -65,6 +65,20 @@ reach yet.
 6. Run `npm test` and `npm run check:boundaries` — `src/voice/` owns portable schemas and
    session, so an import into UI or app internals is a boundary violation.
 
+## Runtime neutrality (the capability contract)
+
+Tools are declared **once** in `src/voice/actionSchemas.js` and are
+IterativWorld's, not any vendor's. A voice runtime adapter
+(`src/voice/voiceRuntime.js`, see `docs/VOICE-RUNTIME.md`) translates this
+contract into its provider's function-calling shape — it never re-authors
+tools per vendor, and `server/providers/openai/toolDescriptions.js` is the
+OpenAI *wording* of the contract, not the capability source of truth. A tool
+that only exists in one vendor's dialect is a finding, not a feature. The
+same rule covers visual grounding: the World Context Engine's structured View
+Snapshot is the primary context for every runtime; raw viewport frames are
+sent only when visual reasoning is genuinely required and structured identity
+hasn't already answered the question.
+
 ## Grounding rule
 
 Tools return **structured data from the world model**, never model-authored facts. An action

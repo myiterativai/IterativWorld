@@ -17,7 +17,7 @@ build/test/deploy template. Each agent exists because something specific can go 
 | `layer-steward` | A surveillance layer silently appearing in the tourism product, because layer availability was global rather than per-product |
 | `boundary-warden` | Architecture rot as a large knowledge layer is added to someone else's enforced module structure |
 | `world-model-architect` | Two sources describing the same place resolving to two entities, and event/observation/cartographic time getting silently conflated |
-| `voice-tool-smith` | Capabilities that exist but the agent can't reach, tool enums drifting out of sync with the catalog, and tool-surface sprawl as capabilities grow |
+| `voice-tool-smith` | Capabilities that exist but the agent can't reach, tool enums drifting out of sync with the catalog, tool-surface sprawl as capabilities grow, and a capability contract that only speaks one vendor's dialect (see docs/VOICE-RUNTIME.md) |
 | `knowledge-steward` | A confidently wrong claim narrated about a real place, and records whose origin can't be reconstructed |
 | `perf-cost-guard` | Budgets that get worse exactly when the product succeeds |
 | `release-captain` | Gates that everyone assumes someone else ran |

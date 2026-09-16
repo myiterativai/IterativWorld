@@ -1158,6 +1158,7 @@
     "modules": [
       "src/voice/realtimeController.js",
       "src/voice/realtimeBackend.js",
+      "src/voice/voiceRuntime.js",
       "src/voice/control.js",
       "src/voice/layerSummary.js",
       "src/voice/voiceCost.js",
@@ -1695,6 +1696,7 @@
       "src/voice/commands.js",
       "src/voice/control.js",
       "src/voice/gevActions.js",
+      "src/voice/voiceRuntime.js",
       "src/services/worldContextEngine.js",
       "src/voice/gevRealtime.js",
       "src/voice/layerSummary.js",

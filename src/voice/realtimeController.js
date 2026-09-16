@@ -43,6 +43,7 @@ export {
 } from './realtimeInputPolicy.js';
 
 import { createRealtimeBackend } from './realtimeBackend.js';
+import { createVoiceRuntimeRegistry } from './voiceRuntime.js';
 
 const STATUS = {
   idle: 'OFF',
@@ -59,7 +60,17 @@ export class GevRealtimeController extends RealtimeFacade {
     ui,
     radioLayer = null,
     dataManager = null,
-    backend = createRealtimeBackend(),
+    backend = createVoiceRuntimeRegistry({
+      runtimes: [
+        {
+          id: 'openai-realtime',
+          label: 'OpenAI Realtime',
+          createBackend: createRealtimeBackend,
+        },
+      ],
+    })
+      .resolve()
+      .createBackend(),
     signal,
     debugSink = postDebugLog,
     actionExecutor,

@@ -65,7 +65,10 @@ camera-and-timeline experience.
 
 ## Phase 4 — AI
 
-**Goal:** grounded natural-language world queries.
+**Goal:** grounded natural-language world queries. The voice layer stays
+provider-neutral (`docs/VOICE-RUNTIME.md`): the capability contract is ours,
+runtimes are adapters, and the World Action API verb surface — if adopted —
+is a world-model query contract, not a voice-layer rewrite.
 
 - [ ] NL → entity graph queries (compare, rank, filter).
 - [ ] Contextual explanations with citations into the provenance layer.
